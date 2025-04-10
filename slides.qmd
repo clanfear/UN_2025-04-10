@@ -1,0 +1,822 @@
+---
+author:
+  - name: Charles C. Lanfear
+    affiliations: University of Cambridge
+title: Open Science
+subtitle: i.e., good science
+format:
+  revealjs:
+    theme: assets/cclslides.scss
+    incremental: false
+    self-contained: false
+    width: 1200
+    height: 800
+    auto-stretch: true
+    title-slide-attributes:
+      data-background-image: img/paisley.png
+      data-background-position: bottom
+      data-background-size: contain
+filters: 
+  - assets/invert-h1.lua
+editor: source
+mouse-wheel: true
+history: false
+---
+
+## The replication crisis
+
+&nbsp; 
+
+![](img/ioannidis.png){fig-align="center"}
+
+
+::: {.notes}
+
+May have heard of replication crisis: 50% of results false; most research fails to replicate
+
+This is mostly due to a combination of two factors:
+
+One is that even perfectly designed and ethical research will routinely produce false positives at conventional confidence levels due to random chance
+
+The second is that journal peer reviewers, editors, and media have historically rewarded unexpected significant results and rejected "boring" null or expected results
+
+
+A second order issue is that then articles are never submitted because authors know they will be rejected
+
+
+This leads to a number of problems:
+
+* Literatures filled with false positives
+* Literatures missing true negatives (file drawer problem)
+* Absence of replication studies (likely null findings)
+* Average estimates greater in magnitude than the real estimands (Gelman's M-bias)
+
+:::
+
+
+
+## Errors and wasted time
+
+&nbsp;
+
+![](img/rr.png){fig-align="center"}
+
+::: {.notes}
+
+Mistakes are another major issue, and sometimes a source of replication failures
+
+* People often make mistakes--and they sometimes get published!
+* It takes forever to correct: need to recreate data, figure out what they did
+
+Relatedly: Researchers often want to do the same analysis with new data or a new analysis with the same data, and either way need to reconstruct everything
+
+This all wastes huge amounts of time and money
+
+:::
+
+## Misconduct & questionable practices
+
+&nbsp;
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/ariely_gino.jpg){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+
+![](img/lies.png){fig-align="center"}
+
+:::
+
+::::
+
+See: [Chin et al. (2023) "Questionable Research Practices and Open Science in Quantitative Criminology" 
+*Journal of Quantitative Criminology*](https://link.springer.com/article/10.1007/s10940-021-09525-6)
+
+::: {.notes}
+
+Incentives in publication, media attention, also propel outright misconduct
+
+* Ariely & Gino scandals: Data fabrication!
+* Wakefield scandal: Autism-vaccine misinformation
+
+As criminologists, misconduct is particularly interesting: it is white collar crime!
+
+Questionable research practices are less shocking, but much more prevalent:
+
+* HARKing: Hypothesising after seeing data
+* p-hacking: "Tweaking" models, sample exclusion, selective reporting
+
+
+:::
+
+## Access barriers
+
+&nbsp;
+
+![](img/paywall.png){fig-align="center"}
+
+
+::: {.notes}
+
+A seemingly unrelated issue: Most scientific results cost money to read! A lot of money!
+
+Out of hands of:
+
+* Public
+* Policymakers
+* Scholars in global south
+
+Publishers make huge amounts of money on researcher work and typically get copyright on their papers: Can literally be unable to access your own paper!
+
+
+:::
+
+
+# Open Science
+
+::: {.notes}
+Open science is general approach that works to address all of these issues (and more)
+
+Broadly, open science is about making science truer to the Mertonian ideals of universalism, openness, disinterestedness, and skepticism
+
+Thus, I argue open science is just... good science
+:::
+
+
+## Open science {.dark-slide}
+
+> an inclusive construct that combines various movements and practices aiming to make multilingual scientific knowledge **openly available, accessible and reusable for everyone**, to increase scientific collaborations and sharing of information for the benefits of science and society, and to open the processes of scientific knowledge creation, evaluation and communication to societal actors beyond the traditional scientific community^[ [UNESCO (2021) Recommendation on Open Science](https://www.unesco.org/en/legal-affairs/recommendation-open-science) ]
+
+
+::: {.fragment .center}
+*Open science has many aspects*
+:::
+
+::: {.fragment .center}
+*Today we focus on what researchers can do*
+:::
+
+## Four aspects
+
+&nbsp;
+
+```{dot}
+#| cache: true
+digraph G{
+  graph [layout=neato, bgcolor="transparent"]
+  node [shape = plaintext, fontname="EB Garamond", fontcolor="#333d4d"]
+  edge [color="#333d4d"]
+  
+  a [pos = "0,  1.25!", label = "Open\nDesign"]
+  b [pos = "1.75,  1.25!", label = "Open\nMethods"]
+  c [pos = "1.75,  0!", label = "Open\nData"]
+  d [pos = "0,  0!", label = "Open\nAccess"]
+
+  a -> b
+  b -> c
+  c -> d
+}
+```
+
+
+::: {.notes}
+There are different names for these parts of open science, but I'm mapping them on to the research process
+:::
+
+
+# Open Design
+
+
+::: {.notes}
+
+In large part a response to the replication crisis
+
+But rooted in basic philosophy of science, particularly of hypothetico-deductive model of inquiry
+
+:::
+
+## Basic principles {.dark-slide}
+
+&nbsp;
+
+Before doing your research:
+
+::::: {.columns}
+
+:::: {.column}
+
+::: {.fragment}
+
+* State your question
+
+   * *How does X effect Y?*
+   * *Did Z happen because of W?*
+
+:::
+
+::::
+
+:::: {.column}
+
+::: {.fragment}
+
+* State how you're answering it
+
+   * *Instrumental variables using...*
+   * *Qualitative process tracing using...*
+
+:::
+
+::::
+
+:::::
+
+::: {.fragment}
+* Commit to publishing regardless of the answer
+
+   * *X doesn't seem to affect Y!*
+   * *It is hard to say because the case is complicated!*
+
+:::
+
+::: {.fragment .center}
+*Let's focus on stating questions and methods first*
+:::
+
+## Registration
+
+&nbsp;
+
+Registrations document your research design *before* you start
+
+&nbsp;
+
+::::: {.columns}
+
+:::: {.column}
+
+::: {.fragment}
+
+**Preregistration**:
+
+* Provides enough detail to replicate study
+* Hosted publicly (e.g., OSF) with a DOI
+* Any changes documented
+
+
+:::
+
+::::
+
+:::: {.column}
+
+::: {.fragment}
+
+**Registered reports**:
+
+* Peer-reviewed preregistration
+* Journal (conditionally) agrees to publish
+* Few crim journals... so far
+
+:::
+
+::::
+
+:::::
+
+::: {.fragment .center}
+Registrations aren't set in stone... but you need to justify deviations!
+:::
+
+::: {.notes}
+
+Vital for true hypothesis testing / theory testing; hypotheses must be stated before you see data to be valid tests!
+
+Less important for exploratory---but it keeps you honest!
+
+Prereg seems like a lot of work but you do most of this in the design phase anyway!
+
+If your project is not at a stage where you can detail the design enough to preregister, you're really doing an exploratory study---which is fine, but be honest about it!
+
+:::
+
+
+## Pregistration example {.dark-slide}
+
+&nbsp;
+
+![](img/sa_prereg2.png){fig-align="center"}
+
+Source: [osf.io/3dbxw](https://osf.io/3dbxw)
+
+::: {.notes}
+This is an Open Science Framework preregistration. OSF provides templates you fill in. They also host it, provide and DOI, and you can set an embargo
+:::
+
+## Pregistration example {.dark-slide}
+
+&nbsp;
+
+![](img/sa_prereg.png){fig-align="center"}
+
+::: {.notes}
+If you've preregistered, include that info in the paper---plus any deviations that were made.
+
+People are likely to have a bit more trust in preregistered papers, though there are obviously ways to misuse it; they're not a cure for outright misconduct
+:::
+
+# Open Methods
+
+## Basic principles {.dark-slide}
+
+&nbsp;
+
+While and after doing your research...
+
+::: {.incremental}
+
+* Follow protocols and record deviations
+* Keep track of all decisions
+* Publish the procedures (e.g., code)
+
+:::
+
+&nbsp;
+
+::: {.fragment .center}
+
+*Goal: Make your work **reproducible** *
+
+:::
+
+
+## Reproducibility
+
+&nbsp;
+
+Replication is running a new study to test if results from a prior study hold.
+
+
+::: {.fragment}
+
+**Reproducibility** is rerunning *the same study* and getting the *same results*.
+
+&nbsp;
+
+:::
+
+
+::: {.fragment}
+
+Reproducibility means:
+
+* Transparent research practices.
+* Minimal barriers to verifying your results.
+
+:::
+
+::: {.fragment}
+
+Reproducible studies can still be *wrong*... and reproducibility makes proving studies wrong *much easier*.
+
+:::
+
+::: {.fragment .center}
+
+*Any study that isn't reproducible can be trusted only on faith.*
+
+:::
+
+::: {.notes}
+
+Reproducibility is about getting the same thing when you clean, organize, and analyze data, and then present your results.
+
+Programming, particularly in R or Python, makes this straightforward; coding skills greatly reduce the tedium of dealing with data, using automation to let you focus on actual methods
+
+Reprducibility will not fix flawed research design, nor offer a remedy for improper application of statistical methods.
+
+Those are the difficult, non-automatable things you want skills in.
+
+:::
+
+
+
+
+
+## Elements of reproducibility
+
+&nbsp;
+
+::: {.fragment}
+
+* **Shared data** to run analyses (we'll return to this!)
+   + Quant: Databases, spreadsheets
+   + Qual: Field notes, interview transcripts
+
+:::
+
+::: {.fragment}
+
+* **Shared procedures** to turn data into results
+   + Quant: Data processing code, statistical routines, software versions
+   + Qual: Analytic codes, observation protocols, interview schedules
+
+:::
+
+::: {.fragment}
+
+Both need **documentation** to be useful!
+
+:::
+
+::: {.fragment .center}
+
+*The **ideal**: The entire project from raw data to paper can be reproduced by anyone*
+
+:::
+
+
+::: {.notes}
+Useful to share procedures even without data! Documents everything that was done and can be reused! 
+:::
+
+## Levels of reproducibility
+
+&nbsp;
+
+For academic papers, degrees of reproducibility vary:
+
+::: {.fragment}
+
+0. "Read the article"
+
+:::
+::: {.fragment}
+
+1. Shared data (with documentation)
+
+:::
+::: {.fragment}
+
+2. Shared data and code / process (with documentation)
+
+:::
+::: {.fragment}
+
+3. Literate programming (e.g., Quarto, Jupyter)
+
+:::
+::: {.fragment}
+
+4. **Research compendium**
+
+:::
+
+
+
+
+## Research compendia
+
+*A  portable, reproducible distribution of a project.*
+
+::: {.incremental}
+
+* A literate programming document as the foundation
+
+* Files organized in a recognizable structure
+
+* Clear separation of data, method, and output
+
+* Well-documented or even *preserved* computational environment
+
+:::
+
+::: {.fragment}
+
+Publish on platforms like GitHub or Dataverse, e.g.:
+
+* [Lanfear, C. C. (2022). "Repository of R code and data for "Collective Efficacy the Built Environment."](https://github.com/clanfear/built_environment_ce)
+* [Lanfear, C. C., Kirk, D. S. (2024) "Replication Data for: The Promise and Perils of the Sharing Economy: The Impact of Airbnb Lettings on Crime"](https://doi.org/10.7910/DVN/YXHITP)
+
+:::
+
+## Example Dataverse repository {.dark-slide}
+
+![](img/sa_repro.png){fig-align="center"}
+
+[https://doi.org/10.7910/DVN/6QX3RU](https://doi.org/10.7910/DVN/6QX3RU)
+
+
+# Open Data
+
+## Basic principles {.dark-slide}
+
+* Make data FAIR:<br>![](img/fair.png){fig-align="center" style="background-color:white;"}
+
+::: {.fragment}
+* But do so **ethically**: *As open as possible, as closed as necessary*
+:::
+
+::: {.aside}
+
+Source: [National Library of Medicine](https://www.nlm.nih.gov/oet/ed/cde/tutorial/02-200.html)
+
+:::
+
+::: {.notes}
+Findable means unique, persistent identifier like a DOI, and indexing somewhere searchable
+
+Accessible means it can be read by humans and machines and it is in a trusted repository
+
+Interoperable means it has a common structure and understandable terminology describing it
+
+Reusable means clear licensing and provenance and meeting community standards 
+
+:::
+
+## Restricted data
+
+&nbsp;
+
+*We can't always share raw data, particularly in **criminology** *
+
+&nbsp;
+
+::::: {.columns}
+:::: {.column}
+
+**Many barriers:**
+
+* Restricted data
+* Vulnerable groups
+* Privacy laws
+* Risk to participants
+* Incrimination
+
+::::
+:::: {.column}
+
+::: {.fragment}
+
+**Many solutions:**
+
+* Analysis data only
+* (Pseudo)anonymisation
+* Restricted access
+* Respondent consent
+* Synthetic data
+
+:::
+
+::::
+:::::
+
+
+## Repositories
+
+&nbsp;
+
+:::: {.columns}
+::: {.column}
+
+* **Harvard Dataverse**
+   + Good for public or private
+   + Indexing with DOI
+   + Used by *Criminology*!
+* **GitHub**
+   + Good for public data
+   + Great for regularly updated data
+   + No indexing^[GitHub can be linked to Dataverse!]
+
+:::
+
+:::{.column}
+* **ICPSR**
+   + Great for private data
+   + Indexing with DOI
+   + Excellent curation, but may cost
+* **openICPSR**
+   + Free self-archiving
+   + Indexing with DOI
+   + No curation
+
+:::
+::::
+
+::: {.notes}
+Many people also just put up on their website, but that isn't a very permanent solution and offers no indexing
+:::
+
+## Example Dataverse data {.dark-slide}
+
+
+![](img/sa_repro2.png){fig-align="center"}
+
+# Open Access
+
+## Types of access
+
+&nbsp;
+
+![](img/oa_venn.png){fig-align="center"}
+
+Source: [Jamie Farquharson](https://doi.org/10.6084/m9.figshare.21598179)
+
+::: {.notes}
+
+Open access articles get more views and citations
+
+Publishing research for free in open journal or repository
+
+Often required by funders, e.g., what is left of NIH
+
+:::
+
+## Gold OA example {.dark-slide}
+
+&nbsp;
+
+![](img/crim_paper.png){fig-align="center"}
+
+
+## Gold refers to the price
+
+&nbsp;
+
+![](img/crim_apc.png){fig-align="center"}
+
+![](img/nhb_apc.png){fig-align="center"}
+
+::: {.notes}
+Major drawback to gold access is that for-profit publishers still get their dime
+
+Many institutions will cover these fees, but that just means public is subsidizing
+:::
+
+## For-profit publishers are evil
+
+&nbsp;
+
+![](img/paywall2.png){fig-align="center"}
+
+::: {.aside}
+Source: [Paywall: The Business of Scholarship (2018)](https://www.imdb.com/title/tt8657152/)
+:::
+
+
+::: {.notes}
+
+Huge profit margins, extracted from scientists, universities, and the public
+
+Little service: Terrible or non-existent editing!
+
+Fight against open access
+
+If going Gold, try to publish with ethical non-profits when you can: JAMA, AAAS, Russell Sage Foundation, etc.
+
+Encourage orgs to leave for-profit publishers
+
+:::
+
+## Self-archiving (Green OA)
+
+&nbsp;
+
+:::: {.columns}
+
+::: {.column width="46%"}
+**Preprints**
+
+* Not yet accepted
+* Before peer-review
+* Working papers
+
+![](img/crimrxiv.png)
+:::
+
+::: {.column width="8%"}
+
+&nbsp;
+
+:::
+
+::: {.column width="46%"}
+
+**Postprints**
+
+* Accepted papers
+* After peer-review
+* Before final formatting
+
+![](img/apollo.png)
+:::
+
+::::
+
+::: {.center}
+*You can also just put it up on your website!*
+:::
+
+::: {.aside}
+CrimRxiv does postprints too!
+:::
+
+::: {.notes}
+Many also put up on their website (myself included), but that is harder for people to find in a search
+
+Great for job market though; anyone going to your website can get your papers!
+:::
+
+
+## Self-archiving example {.dark-slide}
+
+```{=html}
+<iframe width="900" height="600" src="https://clanfear.github.io/ccl_cv/cv_clean/cv_clean.html" title="My CV"></iframe>
+```
+
+# Summary
+
+## Key arguments {.dark-slide}
+
+&nbsp;
+
+* The public should be able to access scientific knowledge
+* Science should be for the benefit of all
+* Sharing tools and methods increases efficiency
+* Open science is more robust
+
+::: {.notes}
+
+Public likely paid for your work, one way or another, so they should be able to read it
+
+More broadly, science belongs to everyone, including researchers and practitioners in the global south
+
+:::
+
+## Process
+
+&nbsp;
+
+```{dot}
+digraph G{
+  graph [layout=neato, bgcolor="transparent"]
+  node [shape = plaintext, fontname="EB Garamond", fontcolor="#333d4d"]
+  edge [color="#333d4d"]
+  
+  a [pos = "0,  1.25!", label = "Open\nDesign"]
+  b [pos = "1.75,  1.25!", label = "Open\nMethods"]
+  c [pos = "1.75,  0!", label = "Open\nData"]
+  d [pos = "0,  0!", label = "Open\nAccess"]
+
+  a -> b
+  b -> c
+  c -> d
+}
+```
+
+## Process
+
+::: {.incremental}
+
+1. **Open Design**: Publish your methods and hypotheses in a pre-registration or submit a registered report
+
+2. **Open Data**: Make the data as FAIR and open as possible and as closed as necessary 
+
+3. **Open Methods**: Make the analysis reproducible and publicly available
+
+4. **Open Access**: Publish the pre-print in an open repository and the paper in an open journal
+
+:::
+
+## Questions {background-image="img/paisley.png" background-position="bottom" background-size="contain"}
+
+&nbsp;
+
+:::: {.columns}
+::: {.column}
+
+Contact:
+
+| Charles C. Lanfear
+| Institute of Criminology
+| University of Cambridge
+| [clanfear.github.io](https://clanfear.github.io)
+| [cl948\@cam.ac.uk](mailto:cl948@cam.ac.uk)
+
+:::
+
+::: {.column}
+Thanks to the following for sharing their materials to make mine better:
+
+* [Iain Brennan](https://www.hull.ac.uk/staff-directory/iain-brennan)
+* [Paola Masuzzo](https://zenodo.org/records/8340244)
+:::
+
+::::
+
+::: {.center}
+[Check out the European Network for Open Criminology!](https://esc-enoc.github.io/)
+:::

@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="slides_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.333">
+
+  <meta name="author" content="Charles C. Lanfear">
+  <title>Open Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="img/paisley.png" data-background-position="bottom" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">Open Science</h1>
+  <p class="subtitle">i.e., good science</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Charles C. Lanfear 
+</div>
+        <p class="quarto-title-affiliation">
+            University of Cambridge
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="the-replication-crisis" class="slide level2">
+<h2>The replication crisis</h2>
+<p>&nbsp;</p>
+
+<img data-src="img/ioannidis.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>May have heard of replication crisis: 50% of results false; most research fails to replicate</p>
+<p>This is mostly due to a combination of two factors:</p>
+<p>One is that even perfectly designed and ethical research will routinely produce false positives at conventional confidence levels due to random chance</p>
+<p>The second is that journal peer reviewers, editors, and media have historically rewarded unexpected significant results and rejected “boring” null or expected results</p>
+<p>A second order issue is that then articles are never submitted because authors know they will be rejected</p>
+<p>This leads to a number of problems:</p>
+<ul>
+<li>Literatures filled with false positives</li>
+<li>Literatures missing true negatives (file drawer problem)</li>
+<li>Absence of replication studies (likely null findings)</li>
+<li>Average estimates greater in magnitude than the real estimands (Gelman’s M-bias)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="errors-and-wasted-time" class="slide level2">
+<h2>Errors and wasted time</h2>
+<p>&nbsp;</p>
+
+<img data-src="img/rr.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>Mistakes are another major issue, and sometimes a source of replication failures</p>
+<ul>
+<li>People often make mistakes–and they sometimes get published!</li>
+<li>It takes forever to correct: need to recreate data, figure out what they did</li>
+</ul>
+<p>Relatedly: Researchers often want to do the same analysis with new data or a new analysis with the same data, and either way need to reconstruct everything</p>
+<p>This all wastes huge amounts of time and money</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="misconduct-questionable-practices" class="slide level2">
+<h2>Misconduct &amp; questionable practices</h2>
+<p>&nbsp;</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/ariely_gino.jpg"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/lies.png"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>See: <a href="https://link.springer.com/article/10.1007/s10940-021-09525-6">Chin et al.&nbsp;(2023) “Questionable Research Practices and Open Science in Quantitative Criminology” <em>Journal of Quantitative Criminology</em></a></p>
+<aside class="notes">
+<p>Incentives in publication, media attention, also propel outright misconduct</p>
+<ul>
+<li>Ariely &amp; Gino scandals: Data fabrication!</li>
+<li>Wakefield scandal: Autism-vaccine misinformation</li>
+</ul>
+<p>As criminologists, misconduct is particularly interesting: it is white collar crime!</p>
+<p>Questionable research practices are less shocking, but much more prevalent:</p>
+<ul>
+<li>HARKing: Hypothesising after seeing data</li>
+<li>p-hacking: “Tweaking” models, sample exclusion, selective reporting</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="access-barriers" class="slide level2">
+<h2>Access barriers</h2>
+<p>&nbsp;</p>
+
+<img data-src="img/paywall.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>A seemingly unrelated issue: Most scientific results cost money to read! A lot of money!</p>
+<p>Out of hands of:</p>
+<ul>
+<li>Public</li>
+<li>Policymakers</li>
+<li>Scholars in global south</li>
+</ul>
+<p>Publishers make huge amounts of money on researcher work and typically get copyright on their papers: Can literally be unable to access your own paper!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section>
+<section id="open-science" class="title-slide slide level1 inv-title center" data-background-color="#b0514a">
+<h1>Open Science</h1>
+<aside class="notes">
+<p>Open science is general approach that works to address all of these issues (and more)</p>
+<p>Broadly, open science is about making science truer to the Mertonian ideals of universalism, openness, disinterestedness, and skepticism</p>
+<p>Thus, I argue open science is just… good science</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="open-science-1" class="slide level2 dark-slide">
+<h2>Open science</h2>
+<blockquote>
+<p>an inclusive construct that combines various movements and practices aiming to make multilingual scientific knowledge <strong>openly available, accessible and reusable for everyone</strong>, to increase scientific collaborations and sharing of information for the benefits of science and society, and to open the processes of scientific knowledge creation, evaluation and communication to societal actors beyond the traditional scientific community<sup>1</sup></p>
+</blockquote>
+<div class="fragment center">
+<p><em>Open science has many aspects</em></p>
+</div>
+<div class="fragment center">
+<p><em>Today we focus on what researchers can do</em></p>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p> <a href="https://www.unesco.org/en/legal-affairs/recommendation-open-science">UNESCO (2021) Recommendation on Open Science</a> </p></li></ol></aside></section>
+<section id="four-aspects" class="slide level2">
+<h2>Four aspects</h2>
+<p>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 194.33 139.60" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 135.6)">
+<title>
+G
+</title>
+<!-- a -->
+<g id="node1" class="node">
+<title>
+a
+</title>
+<text text-anchor="middle" x="27.83" y="-115" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="27.83" y="-98.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Design</text> </g> <!-- b --> <g id="node2" class="node">
+<title>
+b
+</title>
+<text text-anchor="middle" x="153.83" y="-115" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="153.83" y="-98.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Methods</text> </g> <!-- a&#45;&gt;b --> <g id="edge1" class="edge">
+<title>
+a-&gt;b
+</title>
+<path fill="none" stroke="#333d4d" d="M55.79,-110.8C71.99,-110.8 92.72,-110.8 110.94,-110.8"></path> <polygon fill="#333d4d" stroke="#333d4d" points="111.04,-114.3 121.04,-110.8 111.04,-107.3 111.04,-114.3"></polygon> </g> <!-- c --> <g id="node3" class="node">
+<title>
+c
+</title>
+<text text-anchor="middle" x="153.83" y="-25" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="153.83" y="-8.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Data</text> </g> <!-- b&#45;&gt;c --> <g id="edge2" class="edge">
+<title>
+b-&gt;c
+</title>
+<path fill="none" stroke="#333d4d" d="M153.83,-89.93C153.83,-78.57 153.83,-64.3 153.83,-51.67"></path> <polygon fill="#333d4d" stroke="#333d4d" points="157.33,-51.56 153.83,-41.56 150.33,-51.56 157.33,-51.56"></polygon> </g> <!-- d --> <g id="node4" class="node">
+<title>
+d
+</title>
+<text text-anchor="middle" x="27.83" y="-25" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="27.83" y="-8.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Access</text> </g> <!-- c&#45;&gt;d --> <g id="edge3" class="edge">
+<title>
+c-&gt;d
+</title>
+<path fill="none" stroke="#333d4d" d="M126.8,-20.8C109.03,-20.8 85.5,-20.8 65.85,-20.8"></path> <polygon fill="#333d4d" stroke="#333d4d" points="65.69,-17.3 55.69,-20.8 65.69,-24.3 65.69,-17.3"></polygon> </g> </g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>There are different names for these parts of open science, but I’m mapping them on to the research process</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="open-design" class="title-slide slide level1 inv-title center" data-background-color="#b0514a">
+<h1>Open Design</h1>
+<aside class="notes">
+<p>In large part a response to the replication crisis</p>
+<p>But rooted in basic philosophy of science, particularly of hypothetico-deductive model of inquiry</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="basic-principles" class="slide level2 dark-slide">
+<h2>Basic principles</h2>
+<p>&nbsp;</p>
+<p>Before doing your research:</p>
+<div class="columns">
+<div class="column">
+<div class="fragment">
+<ul>
+<li><p>State your question</p>
+<ul>
+<li><em>How does X effect Y?</em></li>
+<li><em>Did Z happen because of W?</em></li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column">
+<div class="fragment">
+<ul>
+<li><p>State how you’re answering it</p>
+<ul>
+<li><em>Instrumental variables using…</em></li>
+<li><em>Qualitative process tracing using…</em></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Commit to publishing regardless of the answer</p>
+<ul>
+<li><em>X doesn’t seem to affect Y!</em></li>
+<li><em>It is hard to say because the case is complicated!</em></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment center">
+<p><em>Let’s focus on stating questions and methods first</em></p>
+</div>
+</section>
+<section id="registration" class="slide level2">
+<h2>Registration</h2>
+<p>&nbsp;</p>
+<p>Registrations document your research design <em>before</em> you start</p>
+<p>&nbsp;</p>
+<div class="columns">
+<div class="column">
+<div class="fragment">
+<p><strong>Preregistration</strong>:</p>
+<ul>
+<li>Provides enough detail to replicate study</li>
+<li>Hosted publicly (e.g., OSF) with a DOI</li>
+<li>Any changes documented</li>
+</ul>
+</div>
+</div><div class="column">
+<div class="fragment">
+<p><strong>Registered reports</strong>:</p>
+<ul>
+<li>Peer-reviewed preregistration</li>
+<li>Journal (conditionally) agrees to publish</li>
+<li>Few crim journals… so far</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment center">
+<p>Registrations aren’t set in stone… but you need to justify deviations!</p>
+</div>
+<aside class="notes">
+<p>Vital for true hypothesis testing / theory testing; hypotheses must be stated before you see data to be valid tests!</p>
+<p>Less important for exploratory—but it keeps you honest!</p>
+<p>Prereg seems like a lot of work but you do most of this in the design phase anyway!</p>
+<p>If your project is not at a stage where you can detail the design enough to preregister, you’re really doing an exploratory study—which is fine, but be honest about it!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pregistration-example" class="slide level2 dark-slide">
+<h2>Pregistration example</h2>
+<p>&nbsp;</p>
+
+<img data-src="img/sa_prereg2.png" class="r-stretch quarto-figure-center"><p>Source: <a href="https://osf.io/3dbxw">osf.io/3dbxw</a></p>
+<aside class="notes">
+<p>This is an Open Science Framework preregistration. OSF provides templates you fill in. They also host it, provide and DOI, and you can set an embargo</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pregistration-example-1" class="slide level2 dark-slide">
+<h2>Pregistration example</h2>
+<p>&nbsp;</p>
+
+<img data-src="img/sa_prereg.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>If you’ve preregistered, include that info in the paper—plus any deviations that were made.</p>
+<p>People are likely to have a bit more trust in preregistered papers, though there are obviously ways to misuse it; they’re not a cure for outright misconduct</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="open-methods" class="title-slide slide level1 inv-title center" data-background-color="#b0514a">
+<h1>Open Methods</h1>
+
+</section>
+<section id="basic-principles-1" class="slide level2 dark-slide">
+<h2>Basic principles</h2>
+<p>&nbsp;</p>
+<p>While and after doing your research…</p>
+<div>
+<ul>
+<li class="fragment">Follow protocols and record deviations</li>
+<li class="fragment">Keep track of all decisions</li>
+<li class="fragment">Publish the procedures (e.g., code)</li>
+</ul>
+</div>
+<p>&nbsp;</p>
+<div class="fragment center">
+<p><em>Goal: Make your work <strong>reproducible</strong> </em></p>
+</div>
+</section>
+<section id="reproducibility" class="slide level2">
+<h2>Reproducibility</h2>
+<p>&nbsp;</p>
+<p>Replication is running a new study to test if results from a prior study hold.</p>
+<div class="fragment">
+<p><strong>Reproducibility</strong> is rerunning <em>the same study</em> and getting the <em>same results</em>.</p>
+<p>&nbsp;</p>
+</div>
+<div class="fragment">
+<p>Reproducibility means:</p>
+<ul>
+<li>Transparent research practices.</li>
+<li>Minimal barriers to verifying your results.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Reproducible studies can still be <em>wrong</em>… and reproducibility makes proving studies wrong <em>much easier</em>.</p>
+</div>
+<div class="fragment center">
+<p><em>Any study that isn’t reproducible can be trusted only on faith.</em></p>
+</div>
+<aside class="notes">
+<p>Reproducibility is about getting the same thing when you clean, organize, and analyze data, and then present your results.</p>
+<p>Programming, particularly in R or Python, makes this straightforward; coding skills greatly reduce the tedium of dealing with data, using automation to let you focus on actual methods</p>
+<p>Reprducibility will not fix flawed research design, nor offer a remedy for improper application of statistical methods.</p>
+<p>Those are the difficult, non-automatable things you want skills in.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="elements-of-reproducibility" class="slide level2">
+<h2>Elements of reproducibility</h2>
+<p>&nbsp;</p>
+<div class="fragment">
+<ul>
+<li><strong>Shared data</strong> to run analyses (we’ll return to this!)
+<ul>
+<li>Quant: Databases, spreadsheets</li>
+<li>Qual: Field notes, interview transcripts</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Shared procedures</strong> to turn data into results
+<ul>
+<li>Quant: Data processing code, statistical routines, software versions</li>
+<li>Qual: Analytic codes, observation protocols, interview schedules</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Both need <strong>documentation</strong> to be useful!</p>
+</div>
+<div class="fragment center">
+<p><em>The <strong>ideal</strong>: The entire project from raw data to paper can be reproduced by anyone</em></p>
+</div>
+<aside class="notes">
+<p>Useful to share procedures even without data! Documents everything that was done and can be reused!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="levels-of-reproducibility" class="slide level2">
+<h2>Levels of reproducibility</h2>
+<p>&nbsp;</p>
+<p>For academic papers, degrees of reproducibility vary:</p>
+<div class="fragment">
+<ol start="0" type="1">
+<li>“Read the article”</li>
+</ol>
+</div>
+<div class="fragment">
+<ol type="1">
+<li>Shared data (with documentation)</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Shared data and code / process (with documentation)</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Literate programming (e.g., Quarto, Jupyter)</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li><strong>Research compendium</strong></li>
+</ol>
+</div>
+</section>
+<section id="research-compendia" class="slide level2">
+<h2>Research compendia</h2>
+<p><em>A portable, reproducible distribution of a project.</em></p>
+<div>
+<ul>
+<li class="fragment"><p>A literate programming document as the foundation</p></li>
+<li class="fragment"><p>Files organized in a recognizable structure</p></li>
+<li class="fragment"><p>Clear separation of data, method, and output</p></li>
+<li class="fragment"><p>Well-documented or even <em>preserved</em> computational environment</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Publish on platforms like GitHub or Dataverse, e.g.:</p>
+<ul>
+<li><a href="https://github.com/clanfear/built_environment_ce">Lanfear, C. C. (2022). “Repository of R code and data for”Collective Efficacy the Built Environment.”</a></li>
+<li><a href="https://doi.org/10.7910/DVN/YXHITP">Lanfear, C. C., Kirk, D. S. (2024) “Replication Data for: The Promise and Perils of the Sharing Economy: The Impact of Airbnb Lettings on Crime”</a></li>
+</ul>
+</div>
+</section>
+<section id="example-dataverse-repository" class="slide level2 dark-slide">
+<h2>Example Dataverse repository</h2>
+
+<img data-src="img/sa_repro.png" class="r-stretch quarto-figure-center"><p><a href="https://doi.org/10.7910/DVN/6QX3RU">https://doi.org/10.7910/DVN/6QX3RU</a></p>
+</section></section>
+<section>
+<section id="open-data" class="title-slide slide level1 inv-title center" data-background-color="#b0514a">
+<h1>Open Data</h1>
+
+</section>
+<section id="basic-principles-2" class="slide level2 dark-slide">
+<h2>Basic principles</h2>
+<ul>
+<li>Make data FAIR:<br><img data-src="img/fair.png" style="background-color:white;" data-fig-align="center"></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>But do so <strong>ethically</strong>: <em>As open as possible, as closed as necessary</em></li>
+</ul>
+</div>
+
+<aside class="notes">
+<p>Findable means unique, persistent identifier like a DOI, and indexing somewhere searchable</p>
+<p>Accessible means it can be read by humans and machines and it is in a trusted repository</p>
+<p>Interoperable means it has a common structure and understandable terminology describing it</p>
+<p>Reusable means clear licensing and provenance and meeting community standards</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Source: <a href="https://www.nlm.nih.gov/oet/ed/cde/tutorial/02-200.html">National Library of Medicine</a></p>
+</div></aside></section>
+<section id="restricted-data" class="slide level2">
+<h2>Restricted data</h2>
+<p>&nbsp;</p>
+<p><em>We can’t always share raw data, particularly in <strong>criminology</strong> </em></p>
+<p>&nbsp;</p>
+<div class="columns">
+<div class="column">
+<p><strong>Many barriers:</strong></p>
+<ul>
+<li>Restricted data</li>
+<li>Vulnerable groups</li>
+<li>Privacy laws</li>
+<li>Risk to participants</li>
+<li>Incrimination</li>
+</ul>
+</div><div class="column">
+<div class="fragment">
+<p><strong>Many solutions:</strong></p>
+<ul>
+<li>Analysis data only</li>
+<li>(Pseudo)anonymisation</li>
+<li>Restricted access</li>
+<li>Respondent consent</li>
+<li>Synthetic data</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="repositories" class="slide level2">
+<h2>Repositories</h2>
+<p>&nbsp;</p>
+<div class="columns">
+<div class="column">
+<ul>
+<li><strong>Harvard Dataverse</strong>
+<ul>
+<li>Good for public or private</li>
+<li>Indexing with DOI</li>
+<li>Used by <em>Criminology</em>!</li>
+</ul></li>
+<li><strong>GitHub</strong>
+<ul>
+<li>Good for public data</li>
+<li>Great for regularly updated data</li>
+<li>No indexing<sup>1</sup></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<ul>
+<li><strong>ICPSR</strong>
+<ul>
+<li>Great for private data</li>
+<li>Indexing with DOI</li>
+<li>Excellent curation, but may cost</li>
+</ul></li>
+<li><strong>openICPSR</strong>
+<ul>
+<li>Free self-archiving</li>
+<li>Indexing with DOI</li>
+<li>No curation</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Many people also just put up on their website, but that isn’t a very permanent solution and offers no indexing</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>GitHub can be linked to Dataverse!</p></li></ol></aside></section>
+<section id="example-dataverse-data" class="slide level2 dark-slide">
+<h2>Example Dataverse data</h2>
+
+<img data-src="img/sa_repro2.png" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="open-access" class="title-slide slide level1 inv-title center" data-background-color="#b0514a">
+<h1>Open Access</h1>
+
+</section>
+<section id="types-of-access" class="slide level2">
+<h2>Types of access</h2>
+<p>&nbsp;</p>
+
+<img data-src="img/oa_venn.png" class="r-stretch quarto-figure-center"><p>Source: <a href="https://doi.org/10.6084/m9.figshare.21598179">Jamie Farquharson</a></p>
+<aside class="notes">
+<p>Open access articles get more views and citations</p>
+<p>Publishing research for free in open journal or repository</p>
+<p>Often required by funders, e.g., what is left of NIH</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="gold-oa-example" class="slide level2 dark-slide">
+<h2>Gold OA example</h2>
+<p>&nbsp;</p>
+
+<img data-src="img/crim_paper.png" class="r-stretch quarto-figure-center"></section>
+<section id="gold-refers-to-the-price" class="slide level2">
+<h2>Gold refers to the price</h2>
+<p>&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/crim_apc.png"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/nhb_apc.png"></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Major drawback to gold access is that for-profit publishers still get their dime</p>
+<p>Many institutions will cover these fees, but that just means public is subsidizing</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="for-profit-publishers-are-evil" class="slide level2">
+<h2>For-profit publishers are evil</h2>
+<p>&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/paywall2.png"></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>Huge profit margins, extracted from scientists, universities, and the public</p>
+<p>Little service: Terrible or non-existent editing!</p>
+<p>Fight against open access</p>
+<p>If going Gold, try to publish with ethical non-profits when you can: JAMA, AAAS, Russell Sage Foundation, etc.</p>
+<p>Encourage orgs to leave for-profit publishers</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Source: <a href="https://www.imdb.com/title/tt8657152/">Paywall: The Business of Scholarship (2018)</a></p>
+</div></aside></section>
+<section id="self-archiving-green-oa" class="slide level2">
+<h2>Self-archiving (Green OA)</h2>
+<p>&nbsp;</p>
+<div class="columns">
+<div class="column" style="width:46%;">
+<p><strong>Preprints</strong></p>
+<ul>
+<li>Not yet accepted</li>
+<li>Before peer-review</li>
+<li>Working papers</li>
+</ul>
+<p><img data-src="img/crimrxiv.png"></p>
+</div><div class="column" style="width:8%;">
+<p>&nbsp;</p>
+</div><div class="column" style="width:46%;">
+<p><strong>Postprints</strong></p>
+<ul>
+<li>Accepted papers</li>
+<li>After peer-review</li>
+<li>Before final formatting</li>
+</ul>
+<p><img data-src="img/apollo.png"></p>
+</div>
+</div>
+<div class="center">
+<p><em>You can also just put it up on your website!</em></p>
+</div>
+
+<aside class="notes">
+<p>Many also put up on their website (myself included), but that is harder for people to find in a search</p>
+<p>Great for job market though; anyone going to your website can get your papers!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>CrimRxiv does postprints too!</p>
+</div></aside></section>
+<section id="self-archiving-example" class="slide level2 dark-slide">
+<h2>Self-archiving example</h2>
+<iframe width="900" height="600" src="https://clanfear.github.io/ccl_cv/cv_clean/cv_clean.html" title="My CV"></iframe>
+</section></section>
+<section>
+<section id="summary" class="title-slide slide level1 inv-title center" data-background-color="#b0514a">
+<h1>Summary</h1>
+
+</section>
+<section id="key-arguments" class="slide level2 dark-slide">
+<h2>Key arguments</h2>
+<p>&nbsp;</p>
+<ul>
+<li>The public should be able to access scientific knowledge</li>
+<li>Science should be for the benefit of all</li>
+<li>Sharing tools and methods increases efficiency</li>
+<li>Open science is more robust</li>
+</ul>
+<aside class="notes">
+<p>Public likely paid for your work, one way or another, so they should be able to read it</p>
+<p>More broadly, science belongs to everyone, including researchers and practitioners in the global south</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="process" class="slide level2">
+<h2>Process</h2>
+<p>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 194.33 139.60" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 135.6)">
+<title>
+G
+</title>
+<!-- a -->
+<g id="node1" class="node">
+<title>
+a
+</title>
+<text text-anchor="middle" x="27.83" y="-115" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="27.83" y="-98.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Design</text> </g> <!-- b --> <g id="node2" class="node">
+<title>
+b
+</title>
+<text text-anchor="middle" x="153.83" y="-115" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="153.83" y="-98.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Methods</text> </g> <!-- a&#45;&gt;b --> <g id="edge1" class="edge">
+<title>
+a-&gt;b
+</title>
+<path fill="none" stroke="#333d4d" d="M55.79,-110.8C71.99,-110.8 92.72,-110.8 110.94,-110.8"></path> <polygon fill="#333d4d" stroke="#333d4d" points="111.04,-114.3 121.04,-110.8 111.04,-107.3 111.04,-114.3"></polygon> </g> <!-- c --> <g id="node3" class="node">
+<title>
+c
+</title>
+<text text-anchor="middle" x="153.83" y="-25" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="153.83" y="-8.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Data</text> </g> <!-- b&#45;&gt;c --> <g id="edge2" class="edge">
+<title>
+b-&gt;c
+</title>
+<path fill="none" stroke="#333d4d" d="M153.83,-89.93C153.83,-78.57 153.83,-64.3 153.83,-51.67"></path> <polygon fill="#333d4d" stroke="#333d4d" points="157.33,-51.56 153.83,-41.56 150.33,-51.56 157.33,-51.56"></polygon> </g> <!-- d --> <g id="node4" class="node">
+<title>
+d
+</title>
+<text text-anchor="middle" x="27.83" y="-25" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Open</text> <text text-anchor="middle" x="27.83" y="-8.2" font-family="EB Garamond" font-size="14.00" fill="#333d4d">Access</text> </g> <!-- c&#45;&gt;d --> <g id="edge3" class="edge">
+<title>
+c-&gt;d
+</title>
+<path fill="none" stroke="#333d4d" d="M126.8,-20.8C109.03,-20.8 85.5,-20.8 65.85,-20.8"></path> <polygon fill="#333d4d" stroke="#333d4d" points="65.69,-17.3 55.69,-20.8 65.69,-24.3 65.69,-17.3"></polygon> </g> </g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="process-1" class="slide level2">
+<h2>Process</h2>
+<div>
+<ol type="1">
+<li class="fragment"><p><strong>Open Design</strong>: Publish your methods and hypotheses in a pre-registration or submit a registered report</p></li>
+<li class="fragment"><p><strong>Open Data</strong>: Make the data as FAIR and open as possible and as closed as necessary</p></li>
+<li class="fragment"><p><strong>Open Methods</strong>: Make the analysis reproducible and publicly available</p></li>
+<li class="fragment"><p><strong>Open Access</strong>: Publish the pre-print in an open repository and the paper in an open journal</p></li>
+</ol>
+</div>
+</section>
+<section id="questions" class="slide level2" data-background-image="img/paisley.png" data-background-position="bottom" data-background-size="contain">
+<h2>Questions</h2>
+<p>&nbsp;</p>
+<div class="columns">
+<div class="column">
+<p>Contact:</p>
+<p>Charles C. Lanfear<br>
+Institute of Criminology<br>
+University of Cambridge<br>
+<a href="https://clanfear.github.io">clanfear.github.io</a><br>
+<a href="mailto:cl948@cam.ac.uk">cl948@cam.ac.uk</a></p>
+</div><div class="column">
+<p>Thanks to the following for sharing their materials to make mine better:</p>
+<ul>
+<li><a href="https://www.hull.ac.uk/staff-directory/iain-brennan">Iain Brennan</a></li>
+<li><a href="https://zenodo.org/records/8340244">Paola Masuzzo</a></li>
+</ul>
+</div>
+</div>
+<div class="center">
+<p><a href="https://esc-enoc.github.io/">Check out the European Network for Open Criminology!</a></p>
+</div>
+<div class="footer footer-default">
+
+</div>
+</section></section>
+
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
